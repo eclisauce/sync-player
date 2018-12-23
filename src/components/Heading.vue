@@ -10,8 +10,13 @@ export default {};
 
 
 <style scoped lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Bowlby+One+SC");
 .big-box {
   height: 250px;
   width: 100%;
+  h1 {
+    text-shadow: 2px 2px #000000ab;
+    font-family: "Bowlby One SC", cursive;
+  }
 }
 </style>

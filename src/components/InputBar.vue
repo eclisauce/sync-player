@@ -3,7 +3,7 @@
     <b-form-input
       v-model="text1"
       type="text"
-      class="text-center"
+      class="text-center main-input"
       placeholder="Paste your youtube link here"
     ></b-form-input>
     <p>Value: {{ text1 }}</p>
@@ -22,4 +22,8 @@ export default {
 
 
 <style scoped lang="scss">
+.main-input {
+  padding: 20px;
+  box-shadow: 4px 6px #8888882f;
+}
 </style>
