@@ -1,4 +1,4 @@
-# test
+# youtube-sync-player
 
 ## Project setup
 ```
