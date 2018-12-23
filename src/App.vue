@@ -4,10 +4,10 @@
       <v-content class="test">
         <v-container fluid fill-height>
           <v-layout justify-center align-center>
-            <v-flex>
-              <h1 class="display-3" justify-center>Watch videos with your friends</h1>
+            <div>
               <input-bar></input-bar>
-            </v-flex>
+              <video-player></video-player>
+            </div>
           </v-layout>
         </v-container>
       </v-content>
@@ -18,10 +18,12 @@
 
 <script>
 import InputBar from "./components/InputBar.vue";
+import VideoPlayer from "./components/VideoPlayer.vue";
 export default {
   name: "App",
   components: {
-    InputBar
+    InputBar,
+    VideoPlayer
   },
   data() {
     return {
