@@ -5,8 +5,10 @@
         <v-container fluid fill-height>
           <v-layout justify-center align-center>
             <div>
-              <input-bar></input-bar>
-              <video-player></video-player>
+              <input-bar @inputData="updateVideoId"></input-bar>
+            </div>
+            <div>
+              <video-player :videoId="childData"></video-player>
             </div>
           </v-layout>
         </v-container>
@@ -27,8 +29,14 @@ export default {
   },
   data() {
     return {
-      //
+      childData: "",
+      isSubmitted: true
     };
+  },
+  methods: {
+    updateVideoId(variable) {
+      this.childData = variable;
+    }
   }
 };
 </script>

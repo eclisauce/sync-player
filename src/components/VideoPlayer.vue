@@ -1,12 +1,35 @@
 <template>
   <div>
     <v-flex>
-      <youtube video-id="BBJa32lCaaY"/>
+      <youtube :video-id="videoId" @playing="playing" :player-vars="playerVars"/>
     </v-flex>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: ["videoId"],
+  data() {
+    return {
+      playerVars: {
+        autoplay: 1,
+        controls: 0
+      }
+    };
+  },
+  methods: {
+    playVideo() {
+      this.player.playVideo();
+    },
+    playing() {
+      console.log("o/ we are watching!!!");
+    }
+  },
+  computed: {
+    player() {
+      return this.$refs.youtube.player;
+    }
+  }
+};
 </script>
 <style lang="scss">
 iframe {
