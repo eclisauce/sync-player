@@ -12,7 +12,7 @@
           </v-btn>
         </v-flex>
         <v-flex xs10>
-          <v-progress-linear color="error" height="20" :value="0"></v-progress-linear>
+          <v-progress-linear color="error" height="20" value="value"></v-progress-linear>
         </v-flex>
       </v-layout>
     </v-flex>
@@ -23,6 +23,7 @@ export default {
   props: ["videoId"],
   data() {
     return {
+      value: "",
       playerVars: {
         controls: 0,
         disablekb: 1,
