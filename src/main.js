@@ -1,8 +1,8 @@
 import Vue from "vue";
-import './plugins/vuetify'
+import "./plugins/vuetify";
 import App from "./App.vue";
 import store from "./store";
-import VueYoutube from 'vue-youtube'
+import VueYoutube from "vue-youtube";
 
 Vue.use(VueYoutube);
 

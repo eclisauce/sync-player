@@ -1,7 +1,13 @@
 <template>
   <div>
     <v-flex>
-      <youtube :video-id="videoId" ref="youtube" @playing="playing" :player-vars="playerVars"/>
+      <youtube
+        :video-id="videoId"
+        ref="youtube"
+        @playing="playing"
+        @ready="ready"
+        :player-vars="playerVars"
+      />
       <v-layout row>
         <v-flex xs2>
           <v-btn @click="playVideo" small fab color="success">
@@ -34,17 +40,29 @@ export default {
     };
   },
   methods: {
-    test() {
-      (this.player.getCurrentTime() / this.player.getDuration()) * 100;
+    ready() {
+      console.log("ready");
     },
     playVideo() {
-      this.player.playVideo();
+      this.$refs.youtube.player.playVideo();
+      let currentTime = Promise.resolve(this.player.getCurrentTime());
+      currentTime.then(function(value) {
+        setInterval(function() {
+          console.log(value);
+        }, 200);
+      });
     },
     pauseVideo() {
-      this.player.pauseVideo();
+      this.$refs.youtube.player.pauseVideo();
     },
+
     playing() {
       console.log("o/ we are watching!!!");
+
+      let duration = Promise.resolve(this.$refs.youtube.player.getDuration());
+      duration.then(function(value) {
+        console.log(value);
+      });
     }
   },
   computed: {
@@ -59,4 +77,3 @@ iframe {
   width: 100%;
 }
 </style>
-
