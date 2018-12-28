@@ -16,7 +16,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      videoId: ""
+    };
   },
   methods: {
     submit: function() {

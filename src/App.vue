@@ -6,8 +6,6 @@
           <v-layout justify-center align-center>
             <div>
               <input-bar @inputData="updateVideoId"></input-bar>
-            </div>
-            <div>
               <video-player :videoId="childData"></video-player>
             </div>
           </v-layout>
