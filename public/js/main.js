@@ -6,19 +6,33 @@ $(".myForm").submit(function (e) {
     player.loadVideoById(vidID);
     $("#videoID").val('');
 
+});
+
+$('.play').click(function (e) {
+    player.playVideo();
+})
+
+$('.pause').click(function (e) {
+    player.pauseVideo();
 })
 
 
+// Function to show the progressbar animation
 function progressBarLoop() {
-    let timeLineBase = $('.timeLineBase');
+    let progressBar = $('.progressBar');
     let timeLine = $('.timeLine');
+
+    // progressBar.click(function (event) {
+    //     let divOffSet = $(this).offset();
+    //     console.log((event.pageX - divOffSet.left));
+
+    // })
+
     setInterval(function () {
-        if (player == null || timeLineBase == null) {
+        if (player == null || progressBar == null) {
             return
         }
         let fraction = (player.getCurrentTime() / player.getDuration()) * 100;
-
-
         timeLine.css("left", fraction.toString() + '%');
     }, 150)
 }
