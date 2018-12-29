@@ -16,12 +16,9 @@ body {
   text-shadow: 2px 2px #000000b7;
 }
 
-.timeLine{
-  width: 20px;
-  height: 20px;
-  margin-left: -4px;
-  position: relative;
-  z-index: 2;
+#slider{
+  width: 100%;
+  display: inline-block;
 }
 
 

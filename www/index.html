@@ -23,7 +23,7 @@
   <div class="container">
     <div class="row">
       <div class="d-flex flex-column bd-highlight mb-3 mx-auto">
-        <div class="p-2 bd-highlight">
+        <!-- <div class="p-2 bd-highlight">
           <h2 class="text-light text-center mainHeader">Watch videos with your friends</h2>
           <form class="mt-2 myForm">
             <div class="input-group mb-3">
@@ -34,25 +34,21 @@
               </div>
             </div>
           </form>
+        </div> -->
+        <div class="p-2 bd-highlight">
+          <div id="player" style="pointer-events: none"></div>
         </div>
         <div class="p-2 bd-highlight">
-          <div id="player"></div>
-        </div>
-        <div class="p-2 bd-highlight">
-          <div class="playerControls">
-            <div class="progressBar col-12 mx-auto bg-danger mb-3 pl-1 ml-3 mt-2">
-              <div class="timeLine bg-info border border-light"></div>
-              <div class="timeLineBase bg-danger"></div>
-            </div>
-            <div class="btn-group col-12 mx-auto" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary play"><i class="fas fa-play"></i></button>
-              <button type="button" class="btn btn-secondary pause"><i class="fas fa-pause"></i></button>
-            </div>
-
+          <div class="controls">
+            <input id="slider" class="" type="range" min="0" max="100" value="0" step="1" oninput="changeTime(this)" />
+            <button class="btn btn-secondary"><i class="fas fa-play"></i></button>
+            <button class="btn btn-secondary"><i class="fas fa-pause"></i></button>
           </div>
+
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -64,7 +60,7 @@
     crossorigin="anonymous"></script>
   <!-- Optional JavaScript -->
   <script src="/socket.io/socket.io.js"></script>
-  <script src="./js/youtubeScript.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script src="./js/main.js"></script>
 
 </body>

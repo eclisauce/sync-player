@@ -9,12 +9,21 @@ const io = require('socket.io')(http);
 // from the www folder
 app.use(express.static('www'));
 
-io.on('connection', function (socket) {
-    socket.on('playEvent', function (msg) {
-        console.log(msg);
+io.on('connection', (socket) => {
+    console.log('Connected');
+    socket.on('update', (data) => {
+        console.log(data);
+        socket.broadcast.emit('update', data);
+    });
+    socket.on('play', () => {
+        socket.broadcast.emit('play')
     })
-    console.log('a user connected');
-
+    socket.on('pause', () => {
+        socket.broadcast.emit('pause')
+    })
+    socket.on('slider', (data) => {
+        socket.broadcast.emit('slider', data)
+    })
 });
 
 
