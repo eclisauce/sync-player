@@ -1,3 +1,7 @@
+const socket = io();
+
+let play = $('.play');
+let pause = $('.pause');
 
 // Load video from User input via video ID
 $(".myForm").submit(function (e) {
@@ -9,10 +13,12 @@ $(".myForm").submit(function (e) {
 });
 
 $('.play').click(function (e) {
+    socket.emit('playEvent', 'play');
     player.playVideo();
 })
 
 $('.pause').click(function (e) {
+    socket.emit('playEvent', 'pause');
     player.pauseVideo();
 })
 
