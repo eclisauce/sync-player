@@ -23,24 +23,21 @@
   <div class="container">
     <div class="row">
       <div class="d-flex flex-column bd-highlight mb-3 mx-auto">
-        <!-- <div class="p-2 bd-highlight">
+        <div class="p-2 bd-highlight">
           <h2 class="text-light text-center mainHeader">Watch videos with your friends</h2>
           <form class="mt-2 myForm">
             <div class="input-group mb-3">
               <input type="text" class="form-control" placeholder="Paste your video-Id" autocomplete="off" id="videoID"
                 aria-label="Example text with button addon" aria-describedby="button-addon1">
-              <div class="input-group-prepend">
-                <button class="btn btn-secondary" type="submit" id="button-addon1">Submit</button>
-              </div>
             </div>
           </form>
-        </div> -->
+        </div>
         <div class="p-2 bd-highlight">
           <div id="player" style="pointer-events: none"></div>
         </div>
         <div class="p-2 bd-highlight">
           <div class="controls">
-            <input id="slider" class="" type="range" min="0" max="100" value="0" step="1" oninput="changeTime(this)" />
+            <input id="slider" class="" type="range" min="0" max="100" value="0" step="0.01" oninput="changeTime(this)" />
             <button class="btn btn-secondary"><i class="fas fa-play"></i></button>
             <button class="btn btn-secondary"><i class="fas fa-pause"></i></button>
           </div>

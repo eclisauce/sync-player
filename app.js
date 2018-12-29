@@ -12,7 +12,6 @@ app.use(express.static('www'));
 io.on('connection', (socket) => {
     console.log('Connected');
     socket.on('update', (data) => {
-        console.log(data);
         socket.broadcast.emit('update', data);
     });
     socket.on('play', () => {

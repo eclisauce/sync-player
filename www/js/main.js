@@ -10,17 +10,21 @@ let slider = document.getElementById('slider');
 // pause and play event listener added
 playButton.addEventListener('click', playVideo);
 pauseButton.addEventListener('click', pauseVideo);
+
+// let videoId;
 // // Load video from User input via video ID
+
 // $(".myForm").submit(function (e) {
 //     e.preventDefault();
-//     let vidID = $("#videoID").val();
-//     player.loadVideoById(vidID);
+//     let videoId = new String($("#videoID").val());
 //     $("#videoID").val('');
-
+//     return videoId
 // });
 
+
+
 let player;
-function onYouTubeIframeAPIReady() {
+function onYouTubeIframeAPIReady(videoId) {
     player = new YT.Player('player', {
         videoId: 'LDU_Txk06tM',
         playerVars: {
@@ -54,7 +58,6 @@ function pauseVideo() {
 // seeker handled
 function changeTime(e) {
     let goTo = player.getDuration() * (e.value / 100);
-    console.log(goTo);
     player.seekTo(goTo, true);
     e.value = goTo
     socket.emit('update', goTo);
@@ -63,7 +66,6 @@ function changeTime(e) {
 // socket events handled
 
 socket.on('update', (data) => {
-    console.log('Recieved data', data)
     slider.value = data;
     player.seekTo(data, true);
 })
