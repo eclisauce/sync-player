@@ -1,6 +1,7 @@
 body, html{
   min-height: 100%;
   margin: 0;
+  font-family: 'Oswald', sans-serif;
 }
 
 body {
@@ -14,6 +15,10 @@ body {
 
 .mainHeader{
   text-shadow: 2px 2px #000000b7;
+}
+
+.warningText{
+  font-size: 20px;
 }
 
 
