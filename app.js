@@ -30,4 +30,4 @@ io.on('connection', (socket) => {
 
 
 // Start the web server on port 3000
-http.listen(3000, () => console.log('Listening on port 3000'));
+http.listen(process.env.PORT || 3000, () => { console.log("listening on port 3000"); });
