@@ -11,22 +11,23 @@ let slider = document.getElementById('slider');
 playButton.addEventListener('click', playVideo);
 pauseButton.addEventListener('click', pauseVideo);
 
-// let videoId;
-// // Load video from User input via video ID
-
-// $(".myForm").submit(function (e) {
-//     e.preventDefault();
-//     let videoId = new String($("#videoID").val());
-//     $("#videoID").val('');
-//     return videoId
-// });
-
-
+function onPlayerReady() {
+    $(".myForm").submit(function (e) {
+        e.preventDefault();
+        let videoId = new String($("#videoID").val());
+        $("#videoID").val('');
+        socket.emit('loadVid', videoId);
+        player.loadVideoById(videoId);
+        player.stopVideo();
+    });
+}
 
 let player;
-function onYouTubeIframeAPIReady(videoId) {
+function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        videoId: 'LDU_Txk06tM',
+        events: {
+            onReady: onPlayerReady
+        },
         playerVars: {
             autoplay: 0,
             rel: 0,
@@ -35,6 +36,7 @@ function onYouTubeIframeAPIReady(videoId) {
             disablekb: 1,
             showInfo: 0
         },
+
     });
 }
 
@@ -64,6 +66,11 @@ function changeTime(e) {
 }
 
 // socket events handled
+
+socket.on('loadVid', (videoId) => {
+    player.loadVideoById(videoId);
+    player.stopVideo();
+})
 
 socket.on('update', (data) => {
     slider.value = data;
