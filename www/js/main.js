@@ -11,6 +11,7 @@ let slider = document.getElementById('slider');
 playButton.addEventListener('click', playVideo);
 pauseButton.addEventListener('click', pauseVideo);
 
+
 function onPlayerReady() {
     $(".myForm").submit(function (e) {
         e.preventDefault();
@@ -22,11 +23,13 @@ function onPlayerReady() {
     });
 }
 
+
 let player;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         events: {
-            onReady: onPlayerReady
+            onReady: onPlayerReady,
+            onError: onPlayerError
         },
         playerVars: {
             autoplay: 0,
@@ -38,6 +41,18 @@ function onYouTubeIframeAPIReady() {
         },
 
     });
+}
+
+function onPlayerError() {
+    console.log(player.m.onError);
+    if (player.m.onError = true) {
+        $('#inputHelp').removeClass('d-none');
+        setTimeout(function () {
+            $('#inputHelp').addClass('d-none');
+        }, 4000);
+    } else {
+        onPlayerReady();
+    }
 }
 
 // play event added
