@@ -11,7 +11,7 @@ let slider = document.getElementById('slider');
 playButton.addEventListener('click', playVideo);
 pauseButton.addEventListener('click', pauseVideo);
 
-
+// when an input from the user this function will trigger and send the video Id to everyone
 function onPlayerReady() {
     $(".myForm").submit(function (e) {
         e.preventDefault();
@@ -24,6 +24,7 @@ function onPlayerReady() {
 }
 
 
+// loading in the youtube player from the api
 let player;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -43,6 +44,8 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+// if not a correct paramater is put into the input field this function will trigger
+
 function onPlayerError() {
     console.log(player.m.onError);
     if (player.m.onError = true) {
@@ -55,7 +58,7 @@ function onPlayerError() {
     }
 }
 
-// play event added
+// play video event
 function playVideo() {
     socket.emit('play')
     player.playVideo();
@@ -66,13 +69,13 @@ function playVideo() {
     }, 150)
 }
 
-// pause event handled
+// pause event 
 function pauseVideo() {
     socket.emit('pause')
     player.pauseVideo();
 }
 
-// seeker handled
+// seeker to in video event
 function changeTime(e) {
     let goTo = player.getDuration() * (e.value / 100);
     player.seekTo(goTo, true);
@@ -80,7 +83,7 @@ function changeTime(e) {
     socket.emit('update', goTo);
 }
 
-// socket events handled
+// socket events to get video and play & pause
 
 socket.on('loadVid', (videoId) => {
     player.loadVideoById(videoId);
