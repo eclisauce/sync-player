@@ -17,6 +17,12 @@ io.on('connection', (socket) => {
     socket.on('loadVid', (videoId) => {
         socket.broadcast.emit('loadVid', videoId)
     })
+    socket.on('playingVideo', (test) => {
+        socket.broadcast.emit('playingVideo', test)
+        console.log(test);
+
+
+    })
     socket.on('play', () => {
         socket.broadcast.emit('play')
     })

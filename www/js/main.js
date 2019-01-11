@@ -33,7 +33,6 @@ function onYouTubeIframeAPIReady() {
             onError: onPlayerError
         },
         playerVars: {
-            autoplay: 0,
             rel: 0,
             modestbranding: 1,
             controls: 0,
@@ -43,6 +42,7 @@ function onYouTubeIframeAPIReady() {
 
     });
 }
+
 
 // if not a correct paramater is put into the input field this function will trigger
 
@@ -60,7 +60,10 @@ function onPlayerError() {
 
 // play video event
 function playVideo() {
-    socket.emit('play')
+    test = player.getVideoData()['video_id']
+    console.log(test);
+    socket.emit('playingVideo', test)
+    socket.emit('play');
     player.playVideo();
     setInterval(() => {
         let fraction = player.getCurrentTime() / player.getDuration() * 100;
@@ -84,6 +87,10 @@ function changeTime(e) {
 }
 
 // socket events to get video and play & pause
+
+socket.on('playingVideo', (test) => {
+    player.loadVideoById(test)
+})
 
 socket.on('loadVid', (videoId) => {
     player.loadVideoById(videoId);
