@@ -19,9 +19,6 @@ io.on('connection', (socket) => {
     })
     socket.on('playingVideo', (test) => {
         socket.broadcast.emit('playingVideo', test)
-        console.log(test);
-
-
     })
     socket.on('play', () => {
         socket.broadcast.emit('play')

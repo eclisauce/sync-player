@@ -3,6 +3,7 @@ const socket = io();
 let buttons = document.getElementsByTagName('button');
 let playButton = buttons[0];
 let pauseButton = buttons[1];
+let syncButton = buttons[2];
 
 // slider
 let slider = document.getElementById('slider');
@@ -10,6 +11,7 @@ let slider = document.getElementById('slider');
 // pause and play event listener added
 playButton.addEventListener('click', playVideo);
 pauseButton.addEventListener('click', pauseVideo);
+syncButton.addEventListener('click', syncVideo);
 
 // when an input from the user this function will trigger and send the video Id to everyone
 function onPlayerReady() {
@@ -60,9 +62,6 @@ function onPlayerError() {
 
 // play video event
 function playVideo() {
-    test = player.getVideoData()['video_id']
-    console.log(test);
-    socket.emit('playingVideo', test)
     socket.emit('play');
     player.playVideo();
     setInterval(() => {
@@ -78,6 +77,13 @@ function pauseVideo() {
     player.pauseVideo();
 }
 
+function syncVideo() {
+    pauseVideo();
+    test = player.getVideoData()['video_id']
+    socket.emit('playingVideo', test)
+    socket.emit('slider', slider.value);
+}
+
 // seeker to in video event
 function changeTime(e) {
     let goTo = player.getDuration() * (e.value / 100);
@@ -89,7 +95,8 @@ function changeTime(e) {
 // socket events to get video and play & pause
 
 socket.on('playingVideo', (test) => {
-    player.loadVideoById(test)
+    player.loadVideoById(test);
+    player.pauseVideo();
 })
 
 socket.on('loadVid', (videoId) => {
