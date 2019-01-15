@@ -29,11 +29,18 @@
         <div class="p-2 bd-highlight">
           <h2 class="text-light text-center mainHeader">Watch videos with your friends</h2>
           <div class="p-2 bd-highlight">
-            <p class="text-light text-center mainHeader">Get some friends together and watch videos in sync and have
+            <p class="text-light text-center mainHeader">Get some friends together and watch videos in sync and
+              have
               fun together</p>
           </div>
           <form class="mt-2 myForm">
-            <div class="input-group mb-3">
+            <div class="input-group mb-1">
+              <p>
+                <a class="btn btn-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                  aria-controls="collapseExample">
+                  <i class="fas fa-info-circle"></i>
+                </a>
+              </p>
               <input type="text" class="form-control" placeholder="Paste your video-Id" autocomplete="off" id="videoID"
                 aria-label="Example text with button addon" aria-describedby="button-addon1">
             </div>
@@ -42,6 +49,17 @@
                 videoid?</p>
             </div>
           </form>
+        </div>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body text-left mb-2">
+            <p>Paste a video id from Youtube into the input field for example <b>LDU_Txk06tM</b></p>
+            <p>Then press <i class="fas fa-play"></i> and the video will start playing for everyone connected to
+              the server</p>
+            <hr>
+            <p>If someone joins after you've started to watch the video, pause the video and press the <i class="fas fa-sync"></i>
+              button</p>
+            <p>And the video data will be sent to the person who joined after and you can watch together again</p>
+          </div>
         </div>
         <div class="p-2 bd-highlight">
           <div id="player" style="pointer-events: none"></div>
@@ -53,11 +71,9 @@
             <button class="btn btn-secondary"><i class="fas fa-pause"></i></button>
             <button class="btn btn-secondary"><i class="fas fa-sync"></i></button>
           </div>
-
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
