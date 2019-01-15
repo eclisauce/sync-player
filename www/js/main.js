@@ -78,10 +78,9 @@ function pauseVideo() {
 }
 
 function syncVideo() {
-    pauseVideo();
     test = player.getVideoData()['video_id']
+    player.pauseVideo();
     socket.emit('playingVideo', test)
-    socket.emit('slider', slider.value);
 }
 
 // seeker to in video event
@@ -96,7 +95,7 @@ function changeTime(e) {
 
 socket.on('playingVideo', (test) => {
     player.loadVideoById(test);
-    player.pauseVideo();
+    player.stopVideo();
 })
 
 socket.on('loadVid', (videoId) => {
